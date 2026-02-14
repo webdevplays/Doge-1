@@ -1,5 +1,5 @@
 
-import React, { Suspense, useRef, useMemo } from 'react';
+import React, { Suspense } from 'react';
 import { motion, useScroll, useTransform, useSpring, useVelocity } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -10,12 +10,24 @@ import Footer from './components/Footer';
 import StarField from './components/StarField';
 import RocketScene from './components/RocketScene';
 
+const LoadingMission = () => (
+  <div className="absolute inset-0 z-50 bg-[#020205]/50 backdrop-blur-sm flex flex-col items-center justify-center">
+    <div className="relative w-16 h-16 mb-4">
+      <div className="absolute inset-0 border-2 border-cyan-500/10 rounded-full" />
+      <motion.div 
+        animate={{ rotate: 360 }}
+        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+        className="absolute inset-0 border-2 border-t-cyan-500 rounded-full"
+      />
+    </div>
+    <span className="font-orbitron text-[10px] text-cyan-400 font-bold tracking-[0.4em] animate-pulse">
+      LINKING PAYLOAD...
+    </span>
+  </div>
+);
+
 const App: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress, scrollY } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
+  const { scrollYProgress, scrollY } = useScroll();
 
   const scrollVelocity = useVelocity(scrollY);
   const smoothVelocity = useSpring(scrollVelocity, { stiffness: 100, damping: 30 });
@@ -31,17 +43,15 @@ const App: React.FC = () => {
   const warpOpacity = useTransform(smoothVelocity, [1000, 3000], [0, 0.4]);
 
   return (
-    <div ref={containerRef} className="relative bg-[#020205] min-h-screen selection:bg-cyan-500/30 overflow-x-hidden">
-      <StarField scrollProgress={smoothProgress} />
-      
-      {/* Cinematic Warp Streaks Overlay */}
-      <motion.div 
-        style={{ opacity: warpOpacity }}
-        className="fixed inset-0 pointer-events-none z-40 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,242,255,0.1)_100%)]"
-      />
+    <div className="relative bg-[#020205] min-h-screen selection:bg-cyan-500/30">
+      {/* Background Layer - Always visible */}
+      <div className="fixed inset-0 z-0 bg-[#020205]">
+        <StarField scrollProgress={smoothProgress} />
+      </div>
 
+      {/* 3D Scene Layer - Suspended independently */}
       <div className="fixed inset-0 pointer-events-none z-10">
-        <Suspense fallback={null}>
+        <Suspense fallback={<LoadingMission />}>
           <RocketScene 
             scrollProgress={smoothProgress} 
             velocityFactor={velocityFactor}
@@ -49,9 +59,16 @@ const App: React.FC = () => {
         </Suspense>
       </div>
 
+      {/* Cinematic Warp Streaks Overlay */}
+      <motion.div 
+        style={{ opacity: warpOpacity }}
+        className="fixed inset-0 pointer-events-none z-40 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,242,255,0.1)_100%)]"
+      />
+
+      {/* UI Layer - Renders immediately */}
       <Navbar />
 
-      <main className="relative z-20">
+      <main className="relative z-20 w-full">
         <Hero scrollProgress={smoothProgress} />
         <About />
         <Tokenomics />
