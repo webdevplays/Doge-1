@@ -9,6 +9,7 @@ import HowToBuy from './components/HowToBuy';
 import Footer from './components/Footer';
 import StarField from './components/StarField';
 import RocketScene from './components/RocketScene';
+import { SolanaProvider } from './components/SolanaProvider';
 
 const LoadingMission = () => (
   <div className="absolute inset-0 z-50 bg-[#020205]/50 backdrop-blur-sm flex flex-col items-center justify-center">
@@ -43,40 +44,42 @@ const App: React.FC = () => {
   const warpOpacity = useTransform(smoothVelocity, [1000, 3000], [0, 0.4]);
 
   return (
-    <div className="relative bg-[#020205] min-h-screen selection:bg-cyan-500/30">
-      {/* Background Layer - Always visible */}
-      <div className="fixed inset-0 z-0 bg-[#020205]">
-        <StarField scrollProgress={smoothProgress} />
+    <SolanaProvider>
+      <div className="relative bg-[#020205] min-h-screen selection:bg-cyan-500/30">
+        {/* Background Layer - Always visible */}
+        <div className="fixed inset-0 z-0 bg-[#020205]">
+          <StarField scrollProgress={smoothProgress} />
+        </div>
+
+        {/* 3D Scene Layer - Suspended independently */}
+        <div className="fixed inset-0 pointer-events-none z-10">
+          <Suspense fallback={<LoadingMission />}>
+            <RocketScene 
+              scrollProgress={smoothProgress} 
+              velocityFactor={velocityFactor}
+            />
+          </Suspense>
+        </div>
+
+        {/* Cinematic Warp Streaks Overlay */}
+        <motion.div 
+          style={{ opacity: warpOpacity }}
+          className="fixed inset-0 pointer-events-none z-40 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,242,255,0.1)_100%)]"
+        />
+
+        {/* UI Layer - Renders immediately */}
+        <Navbar />
+
+        <main className="relative z-20 w-full">
+          <Hero scrollProgress={smoothProgress} />
+          <About />
+          <Tokenomics />
+          <HowToBuy />
+        </main>
+
+        <Footer />
       </div>
-
-      {/* 3D Scene Layer - Suspended independently */}
-      <div className="fixed inset-0 pointer-events-none z-10">
-        <Suspense fallback={<LoadingMission />}>
-          <RocketScene 
-            scrollProgress={smoothProgress} 
-            velocityFactor={velocityFactor}
-          />
-        </Suspense>
-      </div>
-
-      {/* Cinematic Warp Streaks Overlay */}
-      <motion.div 
-        style={{ opacity: warpOpacity }}
-        className="fixed inset-0 pointer-events-none z-40 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,242,255,0.1)_100%)]"
-      />
-
-      {/* UI Layer - Renders immediately */}
-      <Navbar />
-
-      <main className="relative z-20 w-full">
-        <Hero scrollProgress={smoothProgress} />
-        <About />
-        <Tokenomics />
-        <HowToBuy />
-      </main>
-
-      <Footer />
-    </div>
+    </SolanaProvider>
   );
 };
 

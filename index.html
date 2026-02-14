@@ -7,6 +7,13 @@
     <title>DOGE-1 | Lunar Mission Control</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Buffer Polyfill for Solana SDK -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/buffer/6.0.3/buffer.min.js"></script>
+    <script>
+        window.Buffer = window.Buffer || buffer.Buffer;
+    </script>
+    <!-- Solana Wallet Adapter Styles -->
+    <link rel="stylesheet" href="https://unpkg.com/@solana/wallet-adapter-react-ui/styles.css">
     <style>
         :root {
             --accent: #00f2ff;
@@ -80,9 +87,20 @@
             to { transform: translateY(100vh); }
         }
 
-        .kinetic-text span {
-            display: inline-block;
-            transform-origin: bottom;
+        /* Customize Solana Modal to match theme */
+        .wallet-adapter-modal-wrapper {
+            background: #0a0a0f !important;
+            border: 1px solid rgba(0, 242, 255, 0.2) !important;
+            font-family: 'Orbitron', sans-serif !important;
+        }
+        .wallet-adapter-modal-button-close {
+            background: rgba(255, 255, 255, 0.05) !important;
+        }
+        .wallet-adapter-button {
+            font-family: 'Orbitron', sans-serif !important;
+            font-size: 12px !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.1em !important;
         }
     </style>
 <script type="importmap">
@@ -95,7 +113,12 @@
     "lucide-react": "https://esm.sh/lucide-react@^0.564.0",
     "@react-three/fiber": "https://esm.sh/@react-three/fiber@^9.5.0",
     "@react-three/drei": "https://esm.sh/@react-three/drei@^10.7.7",
-    "three": "https://esm.sh/three@^0.182.0"
+    "three": "https://esm.sh/three@^0.182.0",
+    "@solana/web3.js": "https://esm.sh/@solana/web3.js",
+    "@solana/wallet-adapter-base": "https://esm.sh/@solana/wallet-adapter-base",
+    "@solana/wallet-adapter-react": "https://esm.sh/@solana/wallet-adapter-react",
+    "@solana/wallet-adapter-wallets": "https://esm.sh/@solana/wallet-adapter-wallets",
+    "@solana/wallet-adapter-react-ui": "https://esm.sh/@solana/wallet-adapter-react-ui"
   }
 }
 </script>

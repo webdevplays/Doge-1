@@ -1,9 +1,14 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Wallet, Globe, Rocket, CheckCircle2, ChevronRight } from 'lucide-react';
+import { Wallet, Globe, Rocket, CheckCircle2, ChevronRight, LogOut } from 'lucide-react';
+import { useWallet } from '@solana/wallet-adapter-react';
+import { useWalletModal } from '@solana/wallet-adapter-react-ui';
 
 const HowToBuy: React.FC = () => {
+  const { connected, publicKey, disconnect } = useWallet();
+  const { setVisible } = useWalletModal();
+
   const steps = [
     {
       icon: <Wallet size={24} />,
@@ -30,6 +35,18 @@ const HowToBuy: React.FC = () => {
       desc: "Confirm the handshake. You are now officially part of the most ambitious meme-to-moon deployment."
     }
   ];
+
+  const handleWalletAction = () => {
+    if (connected) {
+      disconnect();
+    } else {
+      setVisible(true);
+    }
+  };
+
+  const formattedAddress = publicKey 
+    ? `${publicKey.toBase58().slice(0, 6)}...${publicKey.toBase58().slice(-6)}` 
+    : 'CONNECT MISSION WALLET';
 
   return (
     <section id="buy" className="py-40 px-6 relative z-30">
@@ -89,18 +106,28 @@ const HowToBuy: React.FC = () => {
             whileInView={{ opacity: 1 }}
             className="mt-20 glass-panel p-8 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6"
         >
-            <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-cyan-500 flex items-center justify-center text-black">
+            <div className="flex items-center gap-4 flex-1">
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${connected ? 'bg-cyan-500 text-black' : 'bg-white/10 text-gray-500'}`}>
                     <CheckCircle2 size={20} />
                 </div>
                 <div className="font-orbitron">
-                    <span className="block text-xs text-gray-500">Official Signature</span>
+                    <span className="block text-xs text-gray-500 uppercase tracking-widest">Official Signature</span>
                     <span className="text-sm font-bold text-white break-all">00000000000......0000000000</span>
                 </div>
             </div>
-            <button className="px-8 py-3 bg-white/5 border border-white/10 rounded-full text-xs font-bold tracking-widest hover:bg-white/10 transition-all">
-                COPY CONTRACT
-            </button>
+            
+            <div className="flex flex-wrap items-center gap-4">
+                <button className="px-8 py-3 bg-white/5 border border-white/10 rounded-full text-[10px] font-bold tracking-[0.2em] hover:bg-white/10 transition-all uppercase">
+                    COPY CONTRACT
+                </button>
+                <button 
+                  onClick={handleWalletAction}
+                  className={`px-8 py-3 rounded-full text-[10px] font-orbitron font-black tracking-[0.2em] transition-all flex items-center gap-2 uppercase ${connected ? 'bg-cyan-500/10 border border-cyan-500/50 text-cyan-400' : 'bg-cyan-500 text-black hover:bg-cyan-400'}`}
+                >
+                    {formattedAddress}
+                    {connected && <LogOut size={14} />}
+                </button>
+            </div>
         </motion.div>
       </div>
     </section>

@@ -1,10 +1,14 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Rocket, Twitter, MessageCircle, Menu, X, Activity, ChevronRight } from 'lucide-react';
+import { Rocket, Twitter, MessageCircle, Menu, X, Activity, ChevronRight, LogOut } from 'lucide-react';
+import { useWallet } from '@solana/wallet-adapter-react';
+import { useWalletModal } from '@solana/wallet-adapter-react-ui';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { publicKey, disconnect, connected } = useWallet();
+  const { setVisible } = useWalletModal();
 
   // Prevent scrolling when mobile menu is open
   useEffect(() => {
@@ -51,6 +55,18 @@ const Navbar: React.FC = () => {
     closed: { x: -20, opacity: 0 },
     opened: { x: 0, opacity: 1 }
   };
+
+  const handleWalletAction = () => {
+    if (connected) {
+      disconnect();
+    } else {
+      setVisible(true);
+    }
+  };
+
+  const formattedAddress = publicKey 
+    ? `${publicKey.toBase58().slice(0, 4)}...${publicKey.toBase58().slice(-4)}` 
+    : 'Connect';
 
   return (
     <>
@@ -104,8 +120,10 @@ const Navbar: React.FC = () => {
           {/* Right Section */}
           <div className="flex items-center gap-6">
             <div className="hidden xl:flex items-center gap-4 px-3 py-1.5 bg-white/5 border border-white/10 rounded-full">
-              <Activity size={12} className="text-cyan-400 animate-pulse" />
-              <span className="text-[9px] font-orbitron font-bold tracking-widest text-cyan-400/80 uppercase">Systems: Nominal</span>
+              <Activity size={12} className={connected ? "text-cyan-400 animate-pulse" : "text-gray-600"} />
+              <span className="text-[9px] font-orbitron font-bold tracking-widest text-cyan-400/80 uppercase">
+                {connected ? "Systems: Nominal" : "Systems: Offline"}
+              </span>
             </div>
 
             <div className="h-6 w-px bg-white/10 hidden md:block" />
@@ -126,11 +144,14 @@ const Navbar: React.FC = () => {
             </div>
 
             <motion.button 
+              onClick={handleWalletAction}
               whileHover={{ scale: 1.02, backgroundColor: 'rgba(255,255,255,0.08)' }}
               whileTap={{ scale: 0.98 }}
-              className="hidden sm:block px-6 py-2.5 bg-white/5 border border-white/10 text-white font-orbitron text-[9px] font-black tracking-[0.3em] rounded-sm transition-all uppercase"
+              className="hidden sm:flex items-center gap-2 px-6 py-2.5 bg-white/5 border border-white/10 text-white font-orbitron text-[9px] font-black tracking-[0.3em] rounded-sm transition-all uppercase"
             >
-              Connect
+              {connected && <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(0,242,255,0.8)]" />}
+              {formattedAddress}
+              {connected && <LogOut size={12} className="ml-1 opacity-50 group-hover:opacity-100" />}
             </motion.button>
 
             {/* Mobile Toggle Button */}
@@ -218,13 +239,16 @@ const Navbar: React.FC = () => {
                 </a>
                 <div className="flex-1" />
                 <div className="flex items-center gap-3">
-                  <Activity size={12} className="text-cyan-400 animate-pulse" />
-                  <span className="text-[10px] font-orbitron font-bold text-cyan-400/80 tracking-widest uppercase">System: Online</span>
+                  <Activity size={12} className={connected ? "text-cyan-400 animate-pulse" : "text-gray-600"} />
+                  <span className="text-[10px] font-orbitron font-bold text-cyan-400/80 tracking-widest uppercase">{connected ? "Online" : "Offline"}</span>
                 </div>
               </div>
 
-              <button className="w-full py-5 bg-cyan-500 text-black font-orbitron font-black text-xs tracking-[0.4em] uppercase rounded-sm hover:bg-cyan-400 transition-colors">
-                Connect Wallet
+              <button 
+                onClick={handleWalletAction}
+                className="w-full py-5 bg-cyan-500 text-black font-orbitron font-black text-xs tracking-[0.4em] uppercase rounded-sm hover:bg-cyan-400 transition-colors"
+              >
+                {connected ? formattedAddress : "Connect Wallet"}
               </button>
             </motion.div>
           </motion.div>
