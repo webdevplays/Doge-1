@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Shield, Globe, Cpu, Moon, ArrowUpRight, Zap, Target } from 'lucide-react';

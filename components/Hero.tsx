@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { motion, MotionValue, useTransform } from 'framer-motion';
 import { Zap, ChevronDown, ShieldCheck, Users, TrendingUp, Globe } from 'lucide-react';

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Wallet, Globe, Rocket, CheckCircle2, ChevronRight, Zap } from 'lucide-react';

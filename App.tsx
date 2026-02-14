@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { Suspense, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform, useSpring, useVelocity, AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';

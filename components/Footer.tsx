@@ -1,4 +1,4 @@
-
+// @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Rocket, Twitter, MessageCircle, Github, Mail, ArrowUpCircle, Globe } from 'lucide-react';

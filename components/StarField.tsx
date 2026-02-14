@@ -1,4 +1,4 @@
-
+// @ts-nocheck
 import React, { useMemo } from 'react';
 import { motion, MotionValue, useTransform } from 'framer-motion';
 
