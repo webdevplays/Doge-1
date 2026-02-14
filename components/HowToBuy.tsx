@@ -95,7 +95,7 @@ const HowToBuy: React.FC = () => {
                 </div>
                 <div className="font-orbitron">
                     <span className="block text-xs text-gray-500">Official Signature</span>
-                    <span className="text-sm font-bold text-white break-all">DOGE1m1ss1on...LunaR7S0lanA</span>
+                    <span className="text-sm font-bold text-white break-all">00000000000......0000000000</span>
                 </div>
             </div>
             <button className="px-8 py-3 bg-white/5 border border-white/10 rounded-full text-xs font-bold tracking-widest hover:bg-white/10 transition-all">
