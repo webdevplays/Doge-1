@@ -1,132 +1,130 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Wallet, Globe, Rocket, CheckCircle2, ChevronRight, LogOut } from 'lucide-react';
-import { useWallet } from '@solana/wallet-adapter-react';
-import { useWalletModal } from '@solana/wallet-adapter-react-ui';
+import { Wallet, Globe, Rocket, CheckCircle2, ChevronRight, Zap } from 'lucide-react';
 
 const HowToBuy: React.FC = () => {
-  const { connected, publicKey, disconnect } = useWallet();
-  const { setVisible } = useWalletModal();
-
   const steps = [
     {
       icon: <Wallet size={24} />,
-      title: "Secure a Wallet",
-      tagline: "Phase 1: Readiness",
-      desc: "Deploy a Phantom or Solflare wallet. This is your mission control interface for all DOGE-1 assets."
+      title: "Sync Wallet",
+      tagline: "Step 01: Pre-Flight",
+      desc: "Connect your Phantom or Solflare interface. Ensure your secure seed is offline."
     },
     {
       icon: <Globe size={24} />,
-      title: "Acquire SOL Fuel",
-      tagline: "Phase 2: Refueling",
-      desc: "Obtain Solana (SOL) from any major exchange and transmit it to your mission address."
+      title: "Bridge SOL",
+      tagline: "Step 02: Propulsion",
+      desc: "Acquire Solana fuel and transmit it to your mission control address."
     },
     {
       icon: <Rocket size={24} />,
-      title: "Initialize Swap",
-      tagline: "Phase 3: Launch Prep",
-      desc: "Connect to Raydium or Jupiter. Input the DOGE-1 contract signature and initiate the swap sequence."
+      title: "Finalize Swap",
+      tagline: "Step 03: Liftoff",
+      desc: "Execute the swap sequence on Jupiter. Input the DOGE-1 signature and confirm."
     },
     {
       icon: <CheckCircle2 size={24} />,
-      title: "Lunar Landing",
-      tagline: "Phase 4: Mission Success",
-      desc: "Confirm the handshake. You are now officially part of the most ambitious meme-to-moon deployment."
+      title: "Hold for Orbit",
+      tagline: "Step 04: Arrival",
+      desc: "Mission successful. Your tokens are secured. Prepare for atmospheric exit."
     }
   ];
-
-  const handleWalletAction = () => {
-    if (connected) {
-      disconnect();
-    } else {
-      setVisible(true);
-    }
-  };
-
-  const formattedAddress = publicKey 
-    ? `${publicKey.toBase58().slice(0, 6)}...${publicKey.toBase58().slice(-6)}` 
-    : 'CONNECT MISSION WALLET';
 
   return (
     <section id="buy" className="py-40 px-6 relative z-30">
       <div className="max-w-7xl mx-auto">
         <div className="mb-24 flex flex-col md:flex-row items-end justify-between border-b border-white/5 pb-12">
-          <div className="max-w-xl">
-            <span className="text-cyan-500 font-orbitron text-xs tracking-[0.5em] uppercase font-bold mb-4 block">Deployment Protocol</span>
-            <h2 className="text-5xl md:text-7xl font-orbitron font-black text-white">THE LAUNCH <br /> <span className="text-cyan-400">SEQUENCE</span></h2>
+          <div className="max-w-2xl">
+            <span className="text-cyan-500 font-orbitron text-xs tracking-[0.6em] uppercase font-black mb-6 block">The Deployment Route</span>
+            <h2 className="text-5xl md:text-8xl font-orbitron font-black text-white leading-none uppercase tracking-tighter">
+                MISSION <br /> <span className="text-cyan-400 italic">SEQUENCE</span>
+            </h2>
           </div>
-          <p className="text-gray-500 max-w-sm text-right hidden md:block">
-            Every great journey starts with a single step. Follow our certified route to join the mission.
-          </p>
+          <div className="hidden md:block text-right max-w-sm">
+            <div className="flex items-center gap-2 justify-end mb-4">
+                <span className="text-[10px] font-black text-cyan-400 tracking-[0.3em] uppercase">Security Level: Maximum</span>
+                <Zap size={12} className="text-cyan-400" />
+            </div>
+            <p className="text-gray-500 font-light text-lg">
+                The path to the moon is precise. Follow these protocols for a successful docking.
+            </p>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {steps.map((s, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
+              transition={{ delay: i * 0.15 }}
               viewport={{ once: true }}
               className="relative group"
             >
-              <div className="glass-panel p-8 h-full rounded-2xl group-hover:bg-white/[0.04] transition-all border-l-4 border-l-transparent group-hover:border-l-cyan-500">
-                <div className="flex items-center justify-between mb-8">
-                    <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform">
+              <div className="glass-panel p-10 h-full rounded-[40px] group-hover:bg-cyan-500/[0.03] transition-all border-b-8 border-b-transparent group-hover:border-b-cyan-500">
+                <div className="flex items-center justify-between mb-10">
+                    <div className="w-16 h-16 rounded-2xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 group-hover:scale-110 group-hover:bg-cyan-500 group-hover:text-black transition-all duration-500">
                         {s.icon}
                     </div>
-                    <span className="font-orbitron text-4xl font-black text-white/5 group-hover:text-cyan-500/10 transition-colors">0{i+1}</span>
+                    <span className="font-orbitron text-5xl font-black text-white/5 group-hover:text-cyan-500/10 transition-colors">0{i+1}</span>
                 </div>
                 
-                <span className="text-[10px] uppercase font-bold text-cyan-500/50 tracking-widest block mb-2">{s.tagline}</span>
-                <h3 className="text-xl font-orbitron font-bold text-white mb-4 group-hover:text-cyan-400 transition-colors">{s.title}</h3>
-                <p className="text-gray-400 text-sm font-light leading-relaxed">
+                <span className="text-[10px] uppercase font-black text-cyan-500/60 tracking-[0.4em] block mb-4">{s.tagline}</span>
+                <h3 className="text-2xl font-orbitron font-black text-white mb-6 group-hover:text-cyan-400 transition-colors uppercase">{s.title}</h3>
+                <p className="text-gray-400 text-base font-light leading-relaxed">
                   {s.desc}
                 </p>
 
                 <motion.div 
-                    className="mt-8 flex items-center gap-2 text-cyan-400 text-xs font-bold tracking-widest opacity-0 group-hover:opacity-100 transition-opacity"
+                    className="mt-10 flex items-center gap-3 text-cyan-400 text-[10px] font-black tracking-[0.3em] opacity-40 group-hover:opacity-100 transition-opacity uppercase"
                 >
-                    PROCEED <ChevronRight size={14} />
+                    INITIALIZE <ChevronRight size={14} />
                 </motion.div>
               </div>
               
               {i < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-4 translate-y-[-50%] z-10 text-white/5 group-hover:text-cyan-500/20 transition-colors">
-                      <ChevronRight size={48} />
+                  <div className="hidden lg:block absolute top-1/2 -right-3 translate-y-[-50%] z-10 text-white/10 group-hover:text-cyan-500/30 transition-colors">
+                      <ChevronRight size={40} />
                   </div>
               )}
             </motion.div>
           ))}
         </div>
 
+        {/* Direct Action Hub */}
         <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="mt-20 glass-panel p-8 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="mt-16 glass-panel p-10 rounded-[40px] flex flex-col lg:flex-row items-center justify-between gap-10 border-cyan-500/20"
         >
-            <div className="flex items-center gap-4 flex-1">
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${connected ? 'bg-cyan-500 text-black' : 'bg-white/10 text-gray-500'}`}>
-                    <CheckCircle2 size={20} />
+            <div className="flex items-center gap-6 flex-1">
+                <div className="w-14 h-14 rounded-full flex items-center justify-center bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">
+                    <CheckCircle2 size={24} />
                 </div>
                 <div className="font-orbitron">
-                    <span className="block text-xs text-gray-500 uppercase tracking-widest">Official Signature</span>
-                    <span className="text-sm font-bold text-white break-all">00000000000......0000000000</span>
+                    <span className="block text-[10px] text-gray-500 uppercase tracking-[0.4em] font-black mb-1">Official Payload Address</span>
+                    <span className="text-lg font-black text-white break-all tracking-tighter">DOGE1m1ss1on...LUNAR777</span>
                 </div>
             </div>
             
-            <div className="flex flex-wrap items-center gap-4">
-                <button className="px-8 py-3 bg-white/5 border border-white/10 rounded-full text-[10px] font-bold tracking-[0.2em] hover:bg-white/10 transition-all uppercase">
-                    COPY CONTRACT
-                </button>
+            <div className="flex flex-wrap items-center gap-6">
                 <button 
-                  onClick={handleWalletAction}
-                  className={`px-8 py-3 rounded-full text-[10px] font-orbitron font-black tracking-[0.2em] transition-all flex items-center gap-2 uppercase ${connected ? 'bg-cyan-500/10 border border-cyan-500/50 text-cyan-400' : 'bg-cyan-500 text-black hover:bg-cyan-400'}`}
+                  onClick={() => {
+                    navigator.clipboard.writeText('DOGE1m1ss1onLUNAR777');
+                    alert('Signature Copied to Clipboard');
+                  }}
+                  className="px-10 py-5 bg-white/5 border border-white/10 rounded-full text-[10px] font-black tracking-[0.3em] hover:bg-white/10 transition-all uppercase"
                 >
-                    {formattedAddress}
-                    {connected && <LogOut size={14} />}
+                    COPY SIGNATURE
                 </button>
+                <motion.a 
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  href="https://jup.ag" target="_blank"
+                  className="px-10 py-5 bg-cyan-500 text-black rounded-full text-xs font-orbitron font-black tracking-[0.3em] transition-all flex items-center gap-3 uppercase hover:shadow-[0_0_30px_rgba(0,242,255,0.5)]"
+                >
+                    INITIATE SWAP ON JUPITER
+                </motion.a>
             </div>
         </motion.div>
       </div>

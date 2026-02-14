@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,22 +6,16 @@
     <title>DOGE-1 | Lunar Mission Control</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- Buffer Polyfill for Solana SDK -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/buffer/6.0.3/buffer.min.js"></script>
-    <script>
-        window.Buffer = window.Buffer || buffer.Buffer;
-    </script>
-    <!-- Solana Wallet Adapter Styles -->
-    <link rel="stylesheet" href="https://unpkg.com/@solana/wallet-adapter-react-ui/styles.css">
     <style>
         :root {
             --accent: #00f2ff;
             --secondary: #bd00ff;
+            --bg-deep: #020205;
         }
         body {
             margin: 0;
             padding: 0;
-            background-color: #020205;
+            background-color: var(--bg-deep);
             color: #ffffff;
             font-family: 'Space Grotesk', sans-serif;
             overflow-x: hidden;
@@ -37,7 +30,7 @@
             font-family: 'Orbitron', sans-serif;
         }
         
-        /* Cinematic Film Grain */
+        /* Cinematic Film Grain Overlay */
         body::after {
             content: "";
             position: fixed;
@@ -55,7 +48,7 @@
             width: 4px;
         }
         ::-webkit-scrollbar-track {
-            background: #020205;
+            background: var(--bg-deep);
         }
         ::-webkit-scrollbar-thumb {
             background: linear-gradient(to bottom, var(--accent), var(--secondary));
@@ -63,62 +56,39 @@
         }
 
         .glass-panel {
-            background: rgba(255, 255, 255, 0.015);
-            backdrop-filter: blur(20px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(24px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
         }
 
         .text-glow {
-            text-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
+            text-shadow: 0 0 20px rgba(0, 242, 255, 0.6);
         }
 
-        .scanline {
-            width: 100%;
-            height: 100px;
-            z-index: 50;
-            background: linear-gradient(to bottom, transparent, rgba(0, 242, 255, 0.05), transparent);
-            position: absolute;
-            animation: scan 8s linear infinite;
+        .cta-glow {
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.4);
         }
 
-        @keyframes scan {
-            from { transform: translateY(-100%); }
-            to { transform: translateY(100vh); }
-        }
-
-        /* Customize Solana Modal to match theme */
-        .wallet-adapter-modal-wrapper {
-            background: #0a0a0f !important;
-            border: 1px solid rgba(0, 242, 255, 0.2) !important;
-            font-family: 'Orbitron', sans-serif !important;
-        }
-        .wallet-adapter-modal-button-close {
-            background: rgba(255, 255, 255, 0.05) !important;
-        }
-        .wallet-adapter-button {
-            font-family: 'Orbitron', sans-serif !important;
-            font-size: 12px !important;
-            font-weight: 700 !important;
-            letter-spacing: 0.1em !important;
+        @keyframes shimmer {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
         }
     </style>
 <script type="importmap">
 {
   "imports": {
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "react": "https://esm.sh/react@^19.2.4",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "framer-motion": "https://esm.sh/framer-motion@^12.34.0",
-    "lucide-react": "https://esm.sh/lucide-react@^0.564.0",
-    "@react-three/fiber": "https://esm.sh/@react-three/fiber@^9.5.0",
-    "@react-three/drei": "https://esm.sh/@react-three/drei@^10.7.7",
-    "three": "https://esm.sh/three@^0.182.0",
-    "@solana/web3.js": "https://esm.sh/@solana/web3.js",
-    "@solana/wallet-adapter-base": "https://esm.sh/@solana/wallet-adapter-base",
-    "@solana/wallet-adapter-react": "https://esm.sh/@solana/wallet-adapter-react",
-    "@solana/wallet-adapter-wallets": "https://esm.sh/@solana/wallet-adapter-wallets",
-    "@solana/wallet-adapter-react-ui": "https://esm.sh/@solana/wallet-adapter-react-ui"
+    "react": "https://esm.sh/react@19.0.0",
+    "react/": "https://esm.sh/react@19.0.0/",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+    "react/jsx-runtime": "https://esm.sh/react@19.0.0/jsx-runtime",
+    "framer-motion": "https://esm.sh/framer-motion@11.11.17?external=react,react-dom",
+    "lucide-react": "https://esm.sh/lucide-react@0.477.0?external=react",
+    "three": "https://esm.sh/three@0.174.0",
+    "@react-three/fiber": "https://esm.sh/@react-three/fiber@9.1.0?external=react,react-dom,three",
+    "@react-three/drei": "https://esm.sh/@react-three/drei@10.0.0?external=react,react-dom,three,@react-three/fiber",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
   }
 }
 </script>
