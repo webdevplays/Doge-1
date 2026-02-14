@@ -117,7 +117,7 @@ const About: React.FC = () => {
             >
                 THE MISSION <br />
                 <span className="text-glow text-cyan-400">MANIFESTO</span>
-            </h2 >
+            </motion.h2>
           </div>
           <motion.div 
             initial={{ opacity: 0 }}
