@@ -104,14 +104,14 @@ const HowToBuy: React.FC = () => {
                 </div>
                 <div className="font-orbitron">
                     <span className="block text-[10px] text-gray-500 uppercase tracking-[0.4em] font-black mb-1">Official Payload Address</span>
-                    <span className="text-lg font-black text-white break-all tracking-tighter">DOGE1m1ss1on...LUNAR777</span>
+                    <span className="text-lg font-black text-white break-all tracking-tighter">0000000000...0000000000</span>
                 </div>
             </div>
             
             <div className="flex flex-wrap items-center gap-6">
                 <button 
                   onClick={() => {
-                    navigator.clipboard.writeText('DOGE1m1ss1onLUNAR777');
+                    navigator.clipboard.writeText('00000000000000000000000000000000000000000000');
                     alert('Signature Copied to Clipboard');
                   }}
                   className="px-10 py-5 bg-white/5 border border-white/10 rounded-full text-[10px] font-black tracking-[0.3em] hover:bg-white/10 transition-all uppercase"
