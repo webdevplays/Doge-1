@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
             </p>
             <div className="flex items-center gap-8">
               <motion.a 
-                href="https://twitter.com" target="_blank"
+                href="https://x.com/Dogeonemission" target="_blank"
                 whileHover={{ scale: 1.1, color: '#facc15' }}
                 className="text-gray-600 cursor-pointer transition-colors"
               >
@@ -82,7 +82,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-4">
               {['Telegram', 'Twitter', 'GitHub'].map((item) => (
                 <li key={item}>
-                  <a href={item === 'Telegram' ? 'https://t.me' : item === 'Twitter' ? 'https://twitter.com' : 'https://github.com'} target="_blank" className="text-gray-500 hover:text-yellow-400 text-sm tracking-widest transition-colors font-medium uppercase">
+                  <a href={item === 'Telegram' ? 'https://t.me' : item === 'Twitter' ? 'https://x.com/Dogeonemission' : 'https://github.com'} target="_blank" className="text-gray-500 hover:text-yellow-400 text-sm tracking-widest transition-colors font-medium uppercase">
                     {item}
                   </a>
                 </li>

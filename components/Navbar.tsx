@@ -148,7 +148,7 @@ const Navbar: React.FC = () => {
               <div className="flex items-center gap-4">
                 <motion.a 
                   whileHover={{ y: -1, color: '#facc15' }}
-                  href="https://twitter.com" target="_blank" className="text-gray-400 transition-colors"
+                  href="https://x.com/Dogeonemission" target="_blank" className="text-gray-400 transition-colors"
                 >
                   <Twitter size={16} />
                 </motion.a>
@@ -247,10 +247,10 @@ const Navbar: React.FC = () => {
               className="mt-auto pb-12 relative z-10 border-t border-white/5 pt-12 flex flex-col gap-8"
             >
               <div className="flex items-center gap-6">
-                <a href="https://twitter.com" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white hover:bg-yellow-500/20 hover:text-yellow-400 transition-all">
+                <a href="https://x.com/Dogeonemission" target="_blank" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white hover:bg-yellow-500/20 hover:text-yellow-400 transition-all">
                   <Twitter size={20} />
                 </a>
-                <a href="https://t.me" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white hover:bg-yellow-500/20 hover:text-yellow-400 transition-all">
+                <a href="https://t.me" target="_blank" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white hover:bg-yellow-500/20 hover:text-yellow-400 transition-all">
                   <MessageCircle size={20} />
                 </a>
                 <div className="flex-1" />
