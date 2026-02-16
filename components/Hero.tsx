@@ -15,7 +15,6 @@ const Hero: React.FC<HeroProps> = ({ scrollProgress }) => {
   const badges = [
     { text: "Fair Launch", icon: <Globe size={10} /> },
     { text: "Community Owned", icon: <Users size={10} /> },
-    { text: "Audit Passed", icon: <ShieldCheck size={10} /> },
   ];
 
   return (

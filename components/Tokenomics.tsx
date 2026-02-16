@@ -120,12 +120,16 @@ const Tokenomics: React.FC = () => {
           <div className="bg-[#020205] rounded-full px-12 py-5 flex items-center justify-between">
             <div className="flex items-center gap-10 opacity-40">
               <span className="text-[10px] font-black tracking-widest uppercase">Contract Verified</span>
-              <span className="text-[10px] font-black tracking-widest uppercase">Audit Passed</span>
               <span className="text-[10px] font-black tracking-widest uppercase">Ownership Renounced</span>
             </div>
-            <button className="text-yellow-400 font-orbitron text-[10px] font-black uppercase tracking-widest hover:text-white transition-colors">
+            <a 
+              href="https://solscan.io/token/5twz2KkD9c6HrcFbMMD6GaCEVj8pLC2Pw6dyN2uGpump"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-yellow-400 font-orbitron text-[10px] font-black uppercase tracking-widest hover:text-white transition-colors"
+            >
               VIEW ON SOLSCAN
-            </button>
+            </a>
           </div>
         </motion.div>
       </div>
