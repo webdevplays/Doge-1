@@ -60,9 +60,9 @@ const StarField: React.FC<StarFieldProps> = ({ scrollProgress }) => {
         style={{ y: y1 }}
         className="absolute top-[-20%] left-[-10%] w-[120%] h-[120%] opacity-40 pointer-events-none"
       >
-        <div className="absolute top-[10%] left-[20%] w-[60%] h-[60%] bg-purple-900/10 blur-[200px] rounded-full mix-blend-screen animate-pulse" />
-        <div className="absolute bottom-[20%] right-[10%] w-[50%] h-[50%] bg-cyan-900/10 blur-[200px] rounded-full mix-blend-screen" />
-        <div className="absolute top-[40%] right-[30%] w-[40%] h-[40%] bg-blue-900/10 blur-[180px] rounded-full mix-blend-screen" />
+        <div className="absolute top-[10%] left-[20%] w-[60%] h-[60%] bg-orange-900/10 blur-[200px] rounded-full mix-blend-screen animate-pulse" />
+        <div className="absolute bottom-[20%] right-[10%] w-[50%] h-[50%] bg-yellow-900/10 blur-[200px] rounded-full mix-blend-screen" />
+        <div className="absolute top-[40%] right-[30%] w-[40%] h-[40%] bg-amber-900/10 blur-[180px] rounded-full mix-blend-screen" />
       </motion.div>
 
       {/* Atmospheric Fog */}

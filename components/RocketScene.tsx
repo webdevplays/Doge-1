@@ -47,7 +47,7 @@ const WarpLines: React.FC<{ velocity: number }> = ({ velocity }) => {
           args={[positions, 3]}
         />
       </bufferGeometry>
-      <lineBasicMaterial color="#00f2ff" transparent opacity={0.3} />
+      <lineBasicMaterial color="#facc15" transparent opacity={0.3} />
     </lineSegments>
   );
 };
@@ -108,7 +108,7 @@ const DogeRocket: React.FC<{
         <Trail
             width={0.8}
             length={15}
-            color={new THREE.Color('#00f2ff')}
+            color={new THREE.Color('#facc15')}
             attenuation={(t) => t * t}
         >
             <mesh position={[0, -2, 0]} />
@@ -137,7 +137,7 @@ const DogeRocket: React.FC<{
             <group key={i} rotation={[0, angle, 0]}>
                 <mesh position={[0.75, -1.4, 0]} rotation={[0, 0, -0.2]}>
                     <boxGeometry args={[0.9, 1.4, 0.04]} />
-                    <meshStandardMaterial color="#00f2ff" emissive="#00f2ff" emissiveIntensity={5} />
+                    <meshStandardMaterial color="#facc15" emissive="#facc15" emissiveIntensity={5} />
                 </mesh>
             </group>
         ))}
@@ -145,22 +145,22 @@ const DogeRocket: React.FC<{
         {/* Bridge Window */}
         <mesh position={[0, 1.5, 0.54]} rotation={[0.4, 0, 0]}>
           <sphereGeometry args={[0.2, 16, 16, 0, Math.PI * 2, 0, Math.PI / 2]} />
-          <meshStandardMaterial color="#00f2ff" transparent opacity={0.8} emissive="#00f2ff" emissiveIntensity={3} />
+          <meshStandardMaterial color="#facc15" transparent opacity={0.8} emissive="#facc15" emissiveIntensity={3} />
         </mesh>
         
         {/* Plasma Exhaust */}
         <mesh ref={thrusterRef} position={[0, -2.4, 0]}>
           <cylinderGeometry args={[0.45, 0.01, 1.2, 16]} />
           <meshStandardMaterial 
-            color="#00f2ff" 
+            color="#facc15" 
             transparent 
             opacity={0.8} 
-            emissive="#00f2ff" 
+            emissive="#facc15" 
             emissiveIntensity={40} 
           />
         </mesh>
 
-        <pointLight ref={lightRef} position={[0, -3.2, 0]} color="#00f2ff" intensity={300} distance={20} />
+        <pointLight ref={lightRef} position={[0, -3.2, 0]} color="#facc15" intensity={300} distance={20} />
       </Float>
     </group>
   );
@@ -178,8 +178,8 @@ const RocketScene: React.FC<RocketSceneProps> = ({ scrollProgress, velocityFacto
         
         <ambientLight intensity={1.5} />
         <directionalLight position={[10, 25, 10]} intensity={4} castShadow />
-        <pointLight position={[-20, 10, -10]} intensity={10} color="#bd00ff" />
-        <pointLight position={[20, -10, 10]} intensity={10} color="#00f2ff" />
+        <pointLight position={[-20, 10, -10]} intensity={10} color="#eab308" />
+        <pointLight position={[20, -10, 10]} intensity={10} color="#facc15" />
         
         <DogeRocket scrollProgress={scrollProgress} velocityFactor={velocityFactor} />
         <WarpLines velocity={velocityFactor.get()} />

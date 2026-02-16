@@ -1,11 +1,11 @@
 // @ts-nocheck
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Rocket, Twitter, MessageCircle, Menu, X, Activity, ChevronRight, Timer } from 'lucide-react';
+import { Twitter, MessageCircle, Menu, X, Activity, ChevronRight, Timer } from 'lucide-react';
 
 const UrgencyBanner = () => {
   return (
-    <div className="w-full bg-cyan-500 py-2.5 overflow-hidden whitespace-nowrap border-b border-black/10 relative z-[110] group cursor-pointer">
+    <div className="w-full bg-yellow-500 py-2.5 overflow-hidden whitespace-nowrap border-b border-black/10 relative z-[110] group cursor-pointer">
       <motion.div 
         animate={{ x: ["0%", "-50%"] }}
         transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
@@ -100,16 +100,20 @@ const Navbar: React.FC = () => {
                 }}
                 className="flex items-center gap-3 cursor-pointer group"
               >
-                <div className="relative w-10 h-10 flex items-center justify-center">
-                  <div className="absolute inset-0 bg-cyan-500/20 rounded-lg blur-xl group-hover:bg-cyan-500/40 transition-all" />
-                  <div className="relative w-full h-full bg-black border border-white/10 rounded-lg flex items-center justify-center overflow-hidden">
-                    <Rocket className="text-cyan-400 group-hover:translate-y-[-1px] transition-transform" size={18} />
-                    <div className="absolute bottom-0 left-0 w-full h-[2px] bg-cyan-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+                <div className="relative w-12 h-12 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-yellow-500/20 rounded-lg blur-xl group-hover:bg-yellow-500/40 transition-all" />
+                  <div className="relative w-full h-full bg-black border border-white/10 rounded-lg flex items-center justify-center overflow-hidden p-1.5">
+                    <img 
+                      src="https://69910958681c79fa0bcd324c.imgix.net/doge1_logo.png" 
+                      alt="DOGE-1 Logo" 
+                      className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" 
+                    />
+                    <div className="absolute bottom-0 left-0 w-full h-[2px] bg-yellow-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
                   </div>
                 </div>
                 <div className="flex flex-col">
                   <span className="font-orbitron font-black text-xl tracking-tighter text-white leading-none">
-                    DOGE<span className="text-cyan-400">-1</span>
+                    DOGE<span className="text-yellow-400">-1</span>
                   </span>
                   <span className="text-[7px] uppercase tracking-[0.4em] text-gray-500 font-bold mt-1">Mission Control</span>
                 </div>
@@ -124,7 +128,7 @@ const Navbar: React.FC = () => {
                     className="text-[10px] font-orbitron font-bold tracking-[0.3em] uppercase text-gray-400 hover:text-white transition-colors relative group"
                   >
                     {link.name}
-                    <span className="absolute -bottom-2 left-0 w-0 h-px bg-cyan-400 transition-all duration-500 group-hover:w-full" />
+                    <span className="absolute -bottom-2 left-0 w-0 h-px bg-yellow-400 transition-all duration-500 group-hover:w-full" />
                   </motion.a>
                 ))}
               </div>
@@ -133,8 +137,8 @@ const Navbar: React.FC = () => {
             {/* Right Section */}
             <div className="flex items-center gap-6">
               <div className="hidden xl:flex items-center gap-4 px-3 py-1.5 bg-white/5 border border-white/10 rounded-full">
-                <Activity size={12} className="text-cyan-400 animate-pulse" />
-                <span className="text-[9px] font-orbitron font-bold tracking-widest text-cyan-400/80 uppercase">
+                <Activity size={12} className="text-yellow-400 animate-pulse" />
+                <span className="text-[9px] font-orbitron font-bold tracking-widest text-yellow-400/80 uppercase">
                   Systems: Nominal
                 </span>
               </div>
@@ -143,13 +147,13 @@ const Navbar: React.FC = () => {
 
               <div className="flex items-center gap-4">
                 <motion.a 
-                  whileHover={{ y: -1, color: '#00f2ff' }}
+                  whileHover={{ y: -1, color: '#facc15' }}
                   href="https://twitter.com" target="_blank" className="text-gray-400 transition-colors"
                 >
                   <Twitter size={16} />
                 </motion.a>
                 <motion.a 
-                  whileHover={{ y: -1, color: '#00f2ff' }}
+                  whileHover={{ y: -1, color: '#facc15' }}
                   href="https://t.me" target="_blank" className="text-gray-400 transition-colors"
                 >
                   <MessageCircle size={16} />
@@ -160,7 +164,7 @@ const Navbar: React.FC = () => {
                 href="#buy"
                 whileHover={{ scale: 1.02, backgroundColor: 'rgba(255,255,255,0.08)' }}
                 whileTap={{ scale: 0.98 }}
-                className="hidden sm:flex items-center gap-2 px-6 py-2.5 bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-orbitron text-[9px] font-black tracking-[0.3em] rounded-sm transition-all uppercase"
+                className="hidden sm:flex items-center gap-2 px-6 py-2.5 bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 font-orbitron text-[9px] font-black tracking-[0.3em] rounded-sm transition-all uppercase"
               >
                 JOIN MISSION
               </motion.a>
@@ -211,12 +215,12 @@ const Navbar: React.FC = () => {
           >
             {/* Background Accent */}
             <div className="absolute top-0 right-0 w-full h-full opacity-20 pointer-events-none">
-              <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-cyan-500/20 blur-[120px] rounded-full" />
-              <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-purple-500/10 blur-[100px] rounded-full" />
+              <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-yellow-500/20 blur-[120px] rounded-full" />
+              <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-orange-500/10 blur-[100px] rounded-full" />
             </div>
 
             <div className="flex flex-col gap-8 relative z-10">
-              <span className="text-[10px] font-orbitron font-bold text-cyan-500/50 tracking-[0.5em] uppercase">Navigation Matrix</span>
+              <span className="text-[10px] font-orbitron font-bold text-yellow-500/50 tracking-[0.5em] uppercase">Navigation Matrix</span>
               {navLinks.map((link) => (
                 <motion.a
                   key={link.name}
@@ -226,14 +230,14 @@ const Navbar: React.FC = () => {
                   className="flex items-center justify-between group"
                 >
                   <div className="flex items-center gap-6">
-                    <span className="text-xs font-orbitron font-bold text-gray-700 group-hover:text-cyan-500 transition-colors">
+                    <span className="text-xs font-orbitron font-bold text-gray-700 group-hover:text-yellow-500 transition-colors">
                       {link.id}
                     </span>
-                    <span className="text-4xl md:text-5xl font-orbitron font-black text-white group-hover:text-cyan-400 transition-all group-hover:translate-x-2">
+                    <span className="text-4xl md:text-5xl font-orbitron font-black text-white group-hover:text-yellow-400 transition-all group-hover:translate-x-2">
                       {link.name}
                     </span>
                   </div>
-                  <ChevronRight className="text-white/5 group-hover:text-cyan-400 transition-colors" size={32} />
+                  <ChevronRight className="text-white/5 group-hover:text-yellow-400 transition-colors" size={32} />
                 </motion.a>
               ))}
             </div>
@@ -243,23 +247,23 @@ const Navbar: React.FC = () => {
               className="mt-auto pb-12 relative z-10 border-t border-white/5 pt-12 flex flex-col gap-8"
             >
               <div className="flex items-center gap-6">
-                <a href="https://twitter.com" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white hover:bg-cyan-500/20 hover:text-cyan-400 transition-all">
+                <a href="https://twitter.com" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white hover:bg-yellow-500/20 hover:text-yellow-400 transition-all">
                   <Twitter size={20} />
                 </a>
-                <a href="https://t.me" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white hover:bg-cyan-500/20 hover:text-cyan-400 transition-all">
+                <a href="https://t.me" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white hover:bg-yellow-500/20 hover:text-yellow-400 transition-all">
                   <MessageCircle size={20} />
                 </a>
                 <div className="flex-1" />
                 <div className="flex items-center gap-3">
-                  <Activity size={12} className="text-cyan-400 animate-pulse" />
-                  <span className="text-[10px] font-orbitron font-bold text-cyan-400/80 tracking-widest uppercase">Online</span>
+                  <Activity size={12} className="text-yellow-400 animate-pulse" />
+                  <span className="text-[10px] font-orbitron font-bold text-yellow-400/80 tracking-widest uppercase">Online</span>
                 </div>
               </div>
 
               <a 
                 href="#buy"
                 onClick={() => setIsOpen(false)}
-                className="w-full py-5 bg-cyan-500 text-black text-center font-orbitron font-black text-xs tracking-[0.4em] uppercase rounded-sm hover:bg-cyan-400 transition-colors"
+                className="w-full py-5 bg-yellow-500 text-black text-center font-orbitron font-black text-xs tracking-[0.4em] uppercase rounded-sm hover:bg-yellow-400 transition-colors"
               >
                 JOIN MISSION
               </a>

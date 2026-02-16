@@ -15,14 +15,14 @@ import { Rocket, Zap } from 'lucide-react';
 const LoadingMission = () => (
   <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-[5] bg-transparent">
     <div className="relative w-16 h-16 mb-6">
-      <div className="absolute inset-0 border-4 border-cyan-500/10 rounded-full" />
+      <div className="absolute inset-0 border-4 border-yellow-500/10 rounded-full" />
       <motion.div 
         animate={{ rotate: 360 }}
         transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-        className="absolute inset-0 border-4 border-t-cyan-500 rounded-full"
+        className="absolute inset-0 border-4 border-t-yellow-500 rounded-full"
       />
     </div>
-    <span className="font-orbitron text-[10px] text-cyan-400 font-black tracking-[0.5em] uppercase animate-pulse">
+    <span className="font-orbitron text-[10px] text-yellow-400 font-black tracking-[0.5em] uppercase animate-pulse">
       SYNCING ORBITAL DATA...
     </span>
   </div>
@@ -38,10 +38,10 @@ const StickyBuyButton = ({ scrollProgress }: { scrollProgress: any }) => {
       className="fixed bottom-10 right-10 z-[120] hidden sm:block"
     >
       <motion.button
-        whileHover={{ scale: 1.05, boxShadow: "0 0 50px rgba(0, 242, 255, 0.7)" }}
+        whileHover={{ scale: 1.05, boxShadow: "0 0 50px rgba(234, 179, 8, 0.7)" }}
         whileTap={{ scale: 0.95 }}
         onClick={() => document.getElementById('buy')?.scrollIntoView({ behavior: 'smooth' })}
-        className="flex items-center gap-4 px-10 py-5 bg-cyan-500 text-black font-orbitron font-black text-xs tracking-[0.2em] rounded-full cta-glow group"
+        className="flex items-center gap-4 px-10 py-5 bg-yellow-500 text-black font-orbitron font-black text-xs tracking-[0.2em] rounded-full cta-glow group"
       >
         <div className="relative">
             <Rocket size={18} fill="currentColor" className="group-hover:-translate-y-1 transition-transform" />
@@ -62,7 +62,7 @@ const App: React.FC = () => {
   const warpOpacity = useTransform(smoothVelocity, [800, 4000], [0, 0.7]);
 
   return (
-    <div className="relative bg-[#020205] min-h-screen selection:bg-cyan-500/30 overflow-x-hidden">
+    <div className="relative bg-[#020205] min-h-screen selection:bg-yellow-500/30 overflow-x-hidden">
       {/* Layer 0: Background Stars */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <StarField scrollProgress={smoothProgress} />
@@ -81,7 +81,7 @@ const App: React.FC = () => {
       {/* Layer 20: Hyper-Warp VFX */}
       <motion.div 
         style={{ opacity: warpOpacity }}
-        className="fixed inset-0 pointer-events-none z-20 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,242,255,0.25)_100%)] mix-blend-color-dodge"
+        className="fixed inset-0 pointer-events-none z-20 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(234,179,8,0.25)_100%)] mix-blend-color-dodge"
       />
 
       <Navbar />

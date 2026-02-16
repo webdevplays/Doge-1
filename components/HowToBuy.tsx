@@ -36,15 +36,15 @@ const HowToBuy: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         <div className="mb-24 flex flex-col md:flex-row items-end justify-between border-b border-white/5 pb-12">
           <div className="max-w-2xl">
-            <span className="text-cyan-500 font-orbitron text-xs tracking-[0.6em] uppercase font-black mb-6 block">The Deployment Route</span>
+            <span className="text-yellow-500 font-orbitron text-xs tracking-[0.6em] uppercase font-black mb-6 block">The Deployment Route</span>
             <h2 className="text-4xl md:text-7xl font-orbitron font-black text-white leading-none uppercase tracking-tighter">
-                MISSION <br /> <span className="text-cyan-400 italic">SEQUENCE</span>
+                MISSION <br /> <span className="text-yellow-400 italic">SEQUENCE</span>
             </h2>
           </div>
           <div className="hidden md:block text-right max-w-sm">
             <div className="flex items-center gap-2 justify-end mb-4">
-                <span className="text-[10px] font-black text-cyan-400 tracking-[0.3em] uppercase">Security Level: Maximum</span>
-                <Zap size={12} className="text-cyan-400" />
+                <span className="text-[10px] font-black text-yellow-400 tracking-[0.3em] uppercase">Security Level: Maximum</span>
+                <Zap size={12} className="text-yellow-400" />
             </div>
             <p className="text-gray-500 font-light text-lg">
                 The path to the moon is precise. Follow these protocols for a successful docking.
@@ -62,29 +62,29 @@ const HowToBuy: React.FC = () => {
               viewport={{ once: true }}
               className="relative group"
             >
-              <div className="glass-panel p-10 h-full rounded-[40px] group-hover:bg-cyan-500/[0.03] transition-all border-b-8 border-b-transparent group-hover:border-b-cyan-500">
+              <div className="glass-panel p-10 h-full rounded-[40px] group-hover:bg-yellow-500/[0.03] transition-all border-b-8 border-b-transparent group-hover:border-b-yellow-500">
                 <div className="flex items-center justify-between mb-10">
-                    <div className="w-16 h-16 rounded-2xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 group-hover:scale-110 group-hover:bg-cyan-500 group-hover:text-black transition-all duration-500">
+                    <div className="w-16 h-16 rounded-2xl bg-yellow-500/10 flex items-center justify-center text-yellow-400 group-hover:scale-110 group-hover:bg-yellow-500 group-hover:text-black transition-all duration-500">
                         {s.icon}
                     </div>
-                    <span className="font-orbitron text-5xl font-black text-white/5 group-hover:text-cyan-500/10 transition-colors">0{i+1}</span>
+                    <span className="font-orbitron text-5xl font-black text-white/5 group-hover:text-yellow-500/10 transition-colors">0{i+1}</span>
                 </div>
                 
-                <span className="text-[10px] uppercase font-black text-cyan-500/60 tracking-[0.4em] block mb-4">{s.tagline}</span>
-                <h3 className="text-2xl font-orbitron font-black text-white mb-6 group-hover:text-cyan-400 transition-colors uppercase">{s.title}</h3>
+                <span className="text-[10px] uppercase font-black text-yellow-500/60 tracking-[0.4em] block mb-4">{s.tagline}</span>
+                <h3 className="text-2xl font-orbitron font-black text-white mb-6 group-hover:text-yellow-400 transition-colors uppercase">{s.title}</h3>
                 <p className="text-gray-400 text-base font-light leading-relaxed">
                   {s.desc}
                 </p>
 
                 <motion.div 
-                    className="mt-10 flex items-center gap-3 text-cyan-400 text-[10px] font-black tracking-[0.3em] opacity-40 group-hover:opacity-100 transition-opacity uppercase"
+                    className="mt-10 flex items-center gap-3 text-yellow-400 text-[10px] font-black tracking-[0.3em] opacity-40 group-hover:opacity-100 transition-opacity uppercase"
                 >
                     INITIALIZE <ChevronRight size={14} />
                 </motion.div>
               </div>
               
               {i < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-3 translate-y-[-50%] z-10 text-white/10 group-hover:text-cyan-500/30 transition-colors">
+                  <div className="hidden lg:block absolute top-1/2 -right-3 translate-y-[-50%] z-10 text-white/10 group-hover:text-yellow-500/30 transition-colors">
                       <ChevronRight size={40} />
                   </div>
               )}
@@ -96,10 +96,10 @@ const HowToBuy: React.FC = () => {
         <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            className="mt-16 glass-panel p-10 rounded-[40px] flex flex-col lg:flex-row items-center justify-between gap-10 border-cyan-500/20"
+            className="mt-16 glass-panel p-10 rounded-[40px] flex flex-col lg:flex-row items-center justify-between gap-10 border-yellow-500/20"
         >
             <div className="flex items-center gap-6 flex-1">
-                <div className="w-14 h-14 rounded-full flex items-center justify-center bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">
+                <div className="w-14 h-14 rounded-full flex items-center justify-center bg-yellow-500/10 text-yellow-400 border border-yellow-500/30">
                     <CheckCircle2 size={24} />
                 </div>
                 <div className="font-orbitron">
@@ -122,7 +122,7 @@ const HowToBuy: React.FC = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   href="https://jup.ag" target="_blank"
-                  className="px-10 py-5 bg-cyan-500 text-black rounded-full text-xs font-orbitron font-black tracking-[0.3em] transition-all flex items-center gap-3 uppercase hover:shadow-[0_0_30px_rgba(0,242,255,0.5)]"
+                  className="px-10 py-5 bg-yellow-500 text-black rounded-full text-xs font-orbitron font-black tracking-[0.3em] transition-all flex items-center gap-3 uppercase hover:shadow-[0_0_30px_rgba(234,179,8,0.5)]"
                 >
                     INITIATE SWAP ON JUPITER
                 </motion.a>
