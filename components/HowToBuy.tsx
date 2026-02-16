@@ -37,7 +37,7 @@ const HowToBuy: React.FC = () => {
         <div className="mb-24 flex flex-col md:flex-row items-end justify-between border-b border-white/5 pb-12">
           <div className="max-w-2xl">
             <span className="text-cyan-500 font-orbitron text-xs tracking-[0.6em] uppercase font-black mb-6 block">The Deployment Route</span>
-            <h2 className="text-5xl md:text-8xl font-orbitron font-black text-white leading-none uppercase tracking-tighter">
+            <h2 className="text-4xl md:text-7xl font-orbitron font-black text-white leading-none uppercase tracking-tighter">
                 MISSION <br /> <span className="text-cyan-400 italic">SEQUENCE</span>
             </h2>
           </div>

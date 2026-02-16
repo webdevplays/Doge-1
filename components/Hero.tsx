@@ -12,12 +12,6 @@ const Hero: React.FC<HeroProps> = ({ scrollProgress }) => {
   const opacity = useTransform(scrollProgress, [0, 0.15], [1, 0]);
   const scale = useTransform(scrollProgress, [0, 0.2], [1, 0.9]);
 
-  const stats = [
-    { icon: <TrendingUp size={16} className="text-cyan-400" />, label: "MARKET CAP", value: "$12.4M", desc: "Ascending Rapidly" },
-    { icon: <Users size={16} className="text-cyan-400" />, label: "HOLDERS", value: "24,812", desc: "Lunar Citizens" },
-    { icon: <ShieldCheck size={16} className="text-cyan-400" />, label: "LIQUIDITY", value: "BURNED", desc: "Protocol Secured" },
-  ];
-
   const badges = [
     { text: "Fair Launch", icon: <Globe size={10} /> },
     { text: "Community Owned", icon: <Users size={10} /> },
@@ -59,7 +53,7 @@ const Hero: React.FC<HeroProps> = ({ scrollProgress }) => {
             initial={{ opacity: 0, filter: 'blur(20px)', y: 60 }}
             animate={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
             transition={{ duration: 0.8, ease: "circOut" }}
-            className="block text-white text-[18vw] md:text-[14vw] uppercase"
+            className="block text-white text-[14vw] md:text-[10vw] uppercase"
           >
             DOGE-1
           </motion.span>
@@ -67,7 +61,7 @@ const Hero: React.FC<HeroProps> = ({ scrollProgress }) => {
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 1 }}
-            className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 text-[9vw] md:text-[6.5vw] mt-2 font-black italic uppercase flex items-center justify-center gap-4"
+            className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 text-[8vw] md:text-[5.5vw] mt-2 font-black italic uppercase flex items-center justify-center gap-4"
           >
             THE MOON MISSION.
           </motion.div>
@@ -77,33 +71,11 @@ const Hero: React.FC<HeroProps> = ({ scrollProgress }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
-          className="max-w-3xl mx-auto text-gray-400 text-lg md:text-2xl font-light mb-16 tracking-wide leading-relaxed px-4"
+          className="max-w-3xl mx-auto text-gray-400 text-lg md:text-xl font-light mb-16 tracking-wide leading-relaxed px-4"
         >
           Not just another token. The first lunar payload funded entirely by the community. 
           A historic leap for decentralized culture on Solana.
         </motion.p>
-
-        {/* Real-time FOMO Stats */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 }}
-          className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"
-        >
-          {stats.map((stat, i) => (
-            <div key={i} className="glass-panel p-8 rounded-3xl border-white/5 hover:border-cyan-500/40 transition-all group relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="flex items-center gap-3 mb-3 justify-center">
-                {stat.icon}
-                <span className="text-[10px] font-orbitron font-black text-gray-500 tracking-widest uppercase">{stat.label}</span>
-              </div>
-              <div className="text-4xl font-orbitron font-black text-white group-hover:text-cyan-400 transition-colors">
-                {stat.value}
-              </div>
-              <p className="text-[10px] text-white/20 mt-2 uppercase tracking-widest font-bold">{stat.desc}</p>
-            </div>
-          ))}
-        </motion.div>
 
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }}

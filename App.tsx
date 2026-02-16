@@ -6,6 +6,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Tokenomics from './components/Tokenomics';
 import HowToBuy from './components/HowToBuy';
+import LiveChart from './components/LiveChart';
 import Footer from './components/Footer';
 import StarField from './components/StarField';
 import RocketScene from './components/RocketScene';
@@ -93,6 +94,7 @@ const App: React.FC = () => {
         <div className="relative z-50 bg-[#020205]/40 backdrop-blur-[6px]">
           <About />
           <Tokenomics />
+          <LiveChart />
           <HowToBuy />
         </div>
       </main>

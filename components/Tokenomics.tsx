@@ -27,7 +27,7 @@ const Tokenomics: React.FC = () => {
           <motion.h2 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            className="text-5xl md:text-8xl font-orbitron font-black mb-8 uppercase tracking-tighter"
+            className="text-4xl md:text-7xl font-orbitron font-black mb-8 uppercase tracking-tighter"
           >
             FUELING THE <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 italic">ASCENT</span>
           </motion.h2>

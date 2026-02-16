@@ -124,7 +124,7 @@ const About: React.FC = () => {
             <motion.h2 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                className="text-6xl md:text-9xl font-orbitron font-black text-white uppercase leading-none tracking-tighter"
+                className="text-5xl md:text-8xl font-orbitron font-black text-white uppercase leading-none tracking-tighter"
             >
                 THE MISSION <br />
                 <span className="text-cyan-400 italic">MANIFESTO</span>
@@ -140,7 +140,7 @@ const About: React.FC = () => {
                 <Zap size={16} className="text-cyan-500 animate-pulse" />
                 <div className="h-px flex-1 bg-white/10" />
             </div>
-            <p className="text-gray-500 text-xl md:text-2xl font-light leading-relaxed">
+            <p className="text-gray-500 text-lg md:text-xl font-light leading-relaxed">
                 Space is no longer the playground of billionaire elite. 
                 DOGE-1 is the people's gateway to the stars. We are building the first meme-funded lunar civilization.
             </p>
