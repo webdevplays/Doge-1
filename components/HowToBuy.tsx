@@ -1,9 +1,12 @@
 // @ts-nocheck
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Wallet, Globe, Rocket, CheckCircle2, ChevronRight, Zap } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Wallet, Globe, Rocket, CheckCircle2, ChevronRight, Zap, Copy, Check } from 'lucide-react';
 
 const HowToBuy: React.FC = () => {
+  const [copied, setCopied] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+
   const steps = [
     {
       icon: <Wallet size={24} />,
@@ -33,8 +36,48 @@ const HowToBuy: React.FC = () => {
 
   const contractAddress = "5twz2KkD9c6HrcFbMMD6GaCEVj8pLC2Pw6dyN2uGpump";
 
+  const handleCopy = () => {
+    navigator.clipboard.writeText(contractAddress);
+    setCopied(true);
+    setShowToast(true);
+    setTimeout(() => {
+      setCopied(false);
+    }, 2000);
+    setTimeout(() => {
+      setShowToast(false);
+    }, 3000);
+  };
+
   return (
     <section id="buy" className="py-40 px-6 relative z-30">
+      {/* Success Toast */}
+      <AnimatePresence>
+        {showToast && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.9 }}
+            className="fixed bottom-10 left-1/2 -translate-x-1/2 z-[200] pointer-events-none"
+          >
+            <div className="glass-panel px-8 py-4 rounded-2xl border-yellow-500/50 flex items-center gap-4 shadow-[0_0_40px_rgba(234,179,8,0.3)]">
+              <div className="w-8 h-8 rounded-full bg-yellow-500 flex items-center justify-center text-black">
+                <Check size={18} strokeWidth={3} />
+              </div>
+              <div className="flex flex-col">
+                <span className="font-orbitron font-black text-xs text-yellow-400 tracking-widest uppercase">Signature Locked</span>
+                <span className="text-[10px] text-white/60 font-medium uppercase tracking-tighter">Telemetry copied to clipboard</span>
+              </div>
+              <motion.div 
+                initial={{ width: "100%" }}
+                animate={{ width: "0%" }}
+                transition={{ duration: 3, ease: "linear" }}
+                className="absolute bottom-0 left-0 h-1 bg-yellow-500"
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div className="max-w-7xl mx-auto">
         <div className="mb-24 flex flex-col md:flex-row items-end justify-between border-b border-white/5 pb-12">
           <div className="max-w-2xl">
@@ -106,20 +149,29 @@ const HowToBuy: React.FC = () => {
                 </div>
                 <div className="font-orbitron">
                     <span className="block text-[10px] text-gray-500 uppercase tracking-[0.4em] font-black mb-1">Official Payload Address</span>
-                    <span className="text-lg font-black text-white break-all tracking-tighter">5twz2KkD9c6...uGpump</span>
+                    <span className="text-lg font-black text-white break-all tracking-tighter">{contractAddress.slice(0, 11)}...{contractAddress.slice(-6)}</span>
                 </div>
             </div>
             
             <div className="flex flex-wrap items-center gap-6">
-                <button 
-                  onClick={() => {
-                    navigator.clipboard.writeText(contractAddress);
-                    alert('Signature Copied to Clipboard');
-                  }}
-                  className="px-10 py-5 bg-white/5 border border-white/10 rounded-full text-[10px] font-black tracking-[0.3em] hover:bg-white/10 transition-all uppercase"
+                <motion.button 
+                  onClick={handleCopy}
+                  whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.1)' }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`relative overflow-hidden px-10 py-5 border rounded-full text-[10px] font-black tracking-[0.3em] transition-all uppercase flex items-center gap-3 ${copied ? 'border-yellow-500 text-yellow-500 bg-yellow-500/10' : 'border-white/10 text-white bg-white/5'}`}
                 >
-                    COPY SIGNATURE
-                </button>
+                    <AnimatePresence mode="wait">
+                      {copied ? (
+                        <motion.span key="check" initial={{ y: 20 }} animate={{ y: 0 }} exit={{ y: -20 }} className="flex items-center gap-2">
+                          <Check size={14} /> COPIED!
+                        </motion.span>
+                      ) : (
+                        <motion.span key="copy" initial={{ y: 20 }} animate={{ y: 0 }} exit={{ y: -20 }} className="flex items-center gap-2">
+                          <Copy size={14} /> COPY SIGNATURE
+                        </motion.span>
+                      )}
+                    </AnimatePresence>
+                </motion.button>
                 <motion.a 
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
