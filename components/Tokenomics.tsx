@@ -1,14 +1,14 @@
 // @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Target, Zap, Flame, Lock } from 'lucide-react';
+import { Target, Zap, Flame, Lock, ShieldCheck, Rocket } from 'lucide-react';
 
 const Tokenomics: React.FC = () => {
   const stats = [
-    { label: "Public Launch", value: "65%", icon: <Zap size={20} />, desc: "Fair entry for the people" },
-    { label: "Token Burn", value: "35%", icon: <Flame size={20} />, desc: "Deflationary pressure" },
-    { label: "Liquidity", value: "100%", icon: <Lock size={20} />, desc: "LP Permanently Locked" },
-    { label: "Tax Protocol", value: "0/0", icon: <Target size={20} />, desc: "Zero Buy or Sell Tax" }
+    { label: "Contract", value: "Revoked", icon: <ShieldCheck size={20} />, desc: "Ownership renounced forever" },
+    { label: "Liquidity", value: "Burned 100%", icon: <Flame size={20} />, desc: "Permanently removed from orbit" },
+    { label: "Name", value: "DOGE-1", icon: <Rocket size={20} />, desc: "Official Mission Designation" },
+    { label: "Ticker", value: "$DOGE-1", icon: <Zap size={20} />, desc: "Orbital Signal Identifier" }
   ];
 
   return (
