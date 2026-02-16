@@ -29,24 +29,27 @@ const Footer: React.FC = () => {
               Forging the first multi-planetary meme economy. Join the decentralized frontier and secure your place in the lunar history books.
             </p>
             <div className="flex items-center gap-8">
-              <motion.div 
+              <motion.a 
+                href="https://twitter.com" target="_blank"
                 whileHover={{ scale: 1.1, color: '#00f2ff' }}
                 className="text-gray-600 cursor-pointer transition-colors"
               >
                 <Twitter size={24} />
-              </motion.div>
-              <motion.div 
+              </motion.a>
+              <motion.a 
+                href="https://t.me" target="_blank"
                 whileHover={{ scale: 1.1, color: '#00f2ff' }}
                 className="text-gray-600 cursor-pointer transition-colors"
               >
                 <MessageCircle size={24} />
-              </motion.div>
-              <motion.div 
+              </motion.a>
+              <motion.a 
+                href="https://github.com" target="_blank"
                 whileHover={{ scale: 1.1, color: '#00f2ff' }}
                 className="text-gray-600 cursor-pointer transition-colors"
               >
                 <Github size={24} />
-              </motion.div>
+              </motion.a>
               <motion.div 
                 whileHover={{ scale: 1.1, color: '#00f2ff' }}
                 className="text-gray-600 cursor-pointer transition-colors"
@@ -61,7 +64,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-4">
               {['Launchpad', 'Manifesto', 'Statistics', 'Acquisition'].map((item) => (
                 <li key={item}>
-                  <a href={`#${item.toLowerCase()}`} className="text-gray-500 hover:text-cyan-400 text-sm tracking-widest transition-colors font-medium">
+                  <a href={`#${item.toLowerCase()}`} className="text-gray-500 hover:text-cyan-400 text-sm tracking-widest transition-colors font-medium uppercase">
                     {item}
                   </a>
                 </li>
@@ -72,9 +75,9 @@ const Footer: React.FC = () => {
           <div className="md:col-span-2">
             <h4 className="font-orbitron font-bold text-white text-xs uppercase tracking-[0.4em] mb-10">Resources</h4>
             <ul className="space-y-4">
-              {['Whitepaper', 'Audit', 'GitHub', 'Brand Kit'].map((item) => (
+              {['Telegram', 'Twitter', 'GitHub'].map((item) => (
                 <li key={item}>
-                  <a href="#" className="text-gray-500 hover:text-cyan-400 text-sm tracking-widest transition-colors font-medium">
+                  <a href={item === 'Telegram' ? 'https://t.me' : item === 'Twitter' ? 'https://twitter.com' : 'https://github.com'} target="_blank" className="text-gray-500 hover:text-cyan-400 text-sm tracking-widest transition-colors font-medium uppercase">
                     {item}
                   </a>
                 </li>
@@ -97,18 +100,18 @@ const Footer: React.FC = () => {
 
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex items-center gap-6 text-[10px] font-bold tracking-[0.3em] text-gray-600">
-            <span>© 2024 DOGE-1 MISSION CONTROL</span>
+            <span>© 2026 DOGE-1 MISSION CONTROL</span>
             <div className="w-1 h-1 rounded-full bg-gray-800" />
             <span>SOLANA MAINNET</span>
           </div>
 
           <div className="flex items-center gap-12 text-[10px] font-bold tracking-[0.3em] text-gray-400">
-            <a href="#" className="hover:text-cyan-400 transition-colors">PRIVACY_PROTOCOL</a>
-            <a href="#" className="hover:text-cyan-400 transition-colors">TERMS_OF_SERVICE</a>
+            <a href="#" className="hover:text-cyan-400 transition-colors uppercase">Privacy Protocol</a>
+            <a href="#" className="hover:text-cyan-400 transition-colors uppercase">Terms Of Service</a>
           </div>
           
-          <div className="text-[10px] font-orbitron font-bold text-cyan-500/50">
-            BUILD_VER: 2.0.4-STABLE
+          <div className="text-[10px] font-orbitron font-bold text-cyan-500/50 uppercase">
+            Build Ver: 2.0.4-Stable
           </div>
         </div>
       </div>

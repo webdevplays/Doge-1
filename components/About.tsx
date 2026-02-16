@@ -124,7 +124,7 @@ const About: React.FC = () => {
             <motion.h2 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                className="text-5xl md:text-8xl font-orbitron font-black text-white uppercase leading-none tracking-tighter"
+                className="text-4xl md:text-7xl font-orbitron font-black text-white uppercase leading-none tracking-tighter"
             >
                 THE MISSION <br />
                 <span className="text-cyan-400 italic">MANIFESTO</span>
