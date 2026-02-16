@@ -71,7 +71,7 @@ const LiveChart: React.FC = () => {
             </style>
             <div id="dexscreener-embed">
               <iframe 
-                src="https://dexscreener.com/osmosis/3117-factory_osmo1n3n75av8awcnw4jl62n3l48e6e4sxqmaf97w5ua6ddu4s475q5qq9udvx4_alloyed_allSOL-ibc_498A0751C798A0D9A389AA3691123DADA57DAA4FE165D5C75894505B876BA6E4?embed=1&loadChartSettings=0&chartLeftToolbar=0&chartTheme=dark&theme=dark&chartStyle=0&chartType=usd&interval=15"
+                src="https://dexscreener.com/solana/2hmUqwUYjLgz88ytTmNTMsWjbDbVdPmAEtBjfYrG5vNF?embed=1&loadChartSettings=0&chartLeftToolbar=0&chartTheme=dark&theme=dark&chartStyle=0&chartType=usd&interval=15"
                 title="DOGE-1 Live Chart"
               />
             </div>

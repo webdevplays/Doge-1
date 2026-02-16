@@ -31,6 +31,8 @@ const HowToBuy: React.FC = () => {
     }
   ];
 
+  const contractAddress = "5twz2KkD9c6HrcFbMMD6GaCEVj8pLC2Pw6dyN2uGpump";
+
   return (
     <section id="buy" className="py-40 px-6 relative z-30">
       <div className="max-w-7xl mx-auto">
@@ -104,14 +106,14 @@ const HowToBuy: React.FC = () => {
                 </div>
                 <div className="font-orbitron">
                     <span className="block text-[10px] text-gray-500 uppercase tracking-[0.4em] font-black mb-1">Official Payload Address</span>
-                    <span className="text-lg font-black text-white break-all tracking-tighter">0000000000...0000000000</span>
+                    <span className="text-lg font-black text-white break-all tracking-tighter">5twz2KkD9c6...uGpump</span>
                 </div>
             </div>
             
             <div className="flex flex-wrap items-center gap-6">
                 <button 
                   onClick={() => {
-                    navigator.clipboard.writeText('00000000000000000000000000000000000000000000');
+                    navigator.clipboard.writeText(contractAddress);
                     alert('Signature Copied to Clipboard');
                   }}
                   className="px-10 py-5 bg-white/5 border border-white/10 rounded-full text-[10px] font-black tracking-[0.3em] hover:bg-white/10 transition-all uppercase"
@@ -121,7 +123,7 @@ const HowToBuy: React.FC = () => {
                 <motion.a 
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  href="https://jup.ag" target="_blank"
+                  href={`https://jup.ag/swap/SOL-${contractAddress}`} target="_blank"
                   className="px-10 py-5 bg-yellow-500 text-black rounded-full text-xs font-orbitron font-black tracking-[0.3em] transition-all flex items-center gap-3 uppercase hover:shadow-[0_0_30px_rgba(234,179,8,0.5)]"
                 >
                     INITIATE SWAP ON JUPITER
